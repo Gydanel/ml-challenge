@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
+	"ml-challenge/app/server"
 	"ml-challenge/config"
-	"ml-challenge/server"
 )
 
 func main() {
