@@ -16,3 +16,12 @@ func Cramer(m [2][3]float32) (x, y float32, err error) {
 	}
 	return (m[0][2]*m[1][1] - m[1][2]*m[0][1]) / det, (m[0][0]*m[1][2] - m[1][0]*m[0][2]) / det, nil
 }
+
+func CompareStringsNotEmpty(x, y string) string {
+	// Retorna el string que no este vacio, en caso de que ambos esten vacios retorna un string vacio
+	aux := x
+	if aux == "" && y != "" {
+		aux = y
+	}
+	return aux
+}
