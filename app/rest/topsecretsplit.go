@@ -31,6 +31,10 @@ func (h TopSecretSplitHandler) AddSignal(c *gin.Context) {
 			c.Abort()
 			return
 		}
+		if body.Distance <= 0 {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "distance should be positive"})
+			return
+		}
 		if _, err := h.messageService.BySatelliteName(name); err != nil {
 			h.messageService.Add(body.Distance, body.Message, *satellite)
 		} else {
@@ -42,6 +46,12 @@ func (h TopSecretSplitHandler) AddSignal(c *gin.Context) {
 }
 
 func (h TopSecretSplitHandler) DecodeMessage(c *gin.Context) {
+	/*
+		En el caso de GET como tiene que se un metodo idempotente no agregue ningun paso para borrar los mensajes
+		quizas el agregar un metodo delete para borrar cada mensaje seria lo apropiado, actualmente si se quiere recibir
+		un segundo mensaje (es decir enviar 3 posts uno por cada satelite) la data del mensaje viejo persiste hasta que
+		no sea sobre escrita por el nuevo mensaje lo que puede traer problemas al momento de decifrar los mensajes
+	*/
 	var m1, m2, m3 api.MessageApi
 	messages := h.messageService.All()
 	if len(messages) < 3 {
