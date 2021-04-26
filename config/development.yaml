@@ -5,7 +5,3 @@ http:
   auth:
     user: "user"
     secret: "secret"
-
-db:
-  type: "sqlite"
-  name: "./database.db"
