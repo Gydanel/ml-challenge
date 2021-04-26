@@ -7,6 +7,7 @@ import (
 
 	"ml-challenge/app/server"
 	"ml-challenge/config"
+	"ml-challenge/db"
 )
 
 func main() {
@@ -17,5 +18,6 @@ func main() {
 	}
 	flag.Parse()
 	config.Init(*environment)
+	db.Init()
 	server.Init()
 }
