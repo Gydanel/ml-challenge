@@ -19,7 +19,7 @@ func NewRouter() *gin.Engine {
 	split.Init()
 
 	router.Use(middlewares.AuthMiddleware())
-	api := router.Group("api")
+	api := router.Group("ml-challenge/api")
 	{
 		api.GET("/health", health.Status)
 		api.POST("/topsecret", topSecret.DecodeMessage)

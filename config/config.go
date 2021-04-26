@@ -16,6 +16,12 @@ func Init(env string) {
 	config.SetConfigName(env)
 	config.AddConfigPath("../config/")
 	config.AddConfigPath("config/")
+	config.AutomaticEnv()
+	err = config.BindEnv("auth.user", "AUTH_USER")
+	err = config.BindEnv("auth.secret", "AUTH_SECRET")
+	if err != nil {
+		return
+	}
 	err = config.ReadInConfig()
 	if err != nil {
 		log.Fatal("error on parsing configuration file")

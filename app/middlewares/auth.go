@@ -14,11 +14,11 @@ func BasicAuth(c *gin.Context) {
 	}
 	var user string
 	var secret string
-	if user = cfg.GetString("http.auth.user"); len(strings.TrimSpace(user)) == 0 {
-		c.AbortWithStatus(500)
+	if user = cfg.GetString("auth.user"); len(strings.TrimSpace(user)) == 0 {
+		c.AbortWithStatus(401)
 		return
 	}
-	if secret = cfg.GetString("http.auth.secret"); len(strings.TrimSpace(secret)) == 0 {
+	if secret = cfg.GetString("auth.secret"); len(strings.TrimSpace(secret)) == 0 {
 		c.AbortWithStatus(401)
 		return
 	}
