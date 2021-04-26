@@ -6,6 +6,11 @@ import (
 )
 
 type MessageService struct {
+	/*
+		En este caso el siguiente paso era implementar una db a nivel app para guardar los models pero me encontre
+		con problemas al configurar el package gorm y sqlite y si seguia no llegaba con el deadline que habia prometido ademas
+		supuse que una db para mantener 6 registros (3 messages y 3 satelites) era un poco de overkill
+	*/
 	db []*models.Message
 }
 
