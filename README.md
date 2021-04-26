@@ -47,6 +47,6 @@ curl --location --request POST 'http://localhost:8080/ml-challenge/api/topsecret
 ```
 
 ```
-curl --location --request GET 'http://localhost:8080/ml-challenge/api/health' \
+curl --location --request GET 'http://localhost:8080/ml-challenge/api/topsecret_split' \
      --U <user>:<secret>' \
 ```
